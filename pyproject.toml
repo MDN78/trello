@@ -8,6 +8,7 @@ readme = "README.md"
 [tool.poetry.dependencies]
 python = "^3.12"
 pytest = "^8.2.2"
+selenium = "4.21.0"
 
 [tool.pytest.ini_options]
 addopts = [
@@ -15,6 +16,11 @@ addopts = [
     "--clean-alluredir",
     "-s",
     "-v",
+]
+
+testpaths = [
+    "tests/api",
+    "tests/ui",
 ]
 
 [build-system]
