@@ -1,7 +1,7 @@
 ## Проект по тестированию сервиса Trello  
 ----
 > Trello - инструмент, который позволяет вашей команде управлять проектами, рабочими процессами и заданиям любых типов.  
-> [Сайт TRELLO.com](https://trello.com/home)
+> [Сайт Trello](https://trello.com/home)
 
 ![](assets/trello_main_page.PNG)
 ----
