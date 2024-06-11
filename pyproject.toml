@@ -12,16 +12,15 @@ selenium = "4.21.0"
 
 [tool.pytest.ini_options]
 addopts = [
-    "--alluredir", "allure-results",
-    "--clean-alluredir",
+#    "--alluredir", "allure-results",
+#    "--clean-alluredir",
     "-s",
     "-v",
 ]
-
-testpaths = [
-    "tests/api",
-    "tests/ui",
-]
+#
+#testpaths = [
+#    "tests,
+#]
 
 [build-system]
 requires = ["poetry-core"]
