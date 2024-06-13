@@ -22,3 +22,15 @@
 
 ### Локальный запуск
 1. Получить API key & Token via Trello service
+2. Создать файл `test_data.json` и наполнить тестовыми данными в формате:
+```json
+{
+    "key": "3d8eb615e7abdd4dbe36bcche656f9",
+    "token": "ATTA047246b1dc3478903f1f804ecdfd15c31b8caa37bf2fc515ae56432b1096ef234A4FDFCE0",
+    "email": "test@test.com",
+    "password": "123456789",
+    "username": "Semen",
+    "org_id": "63558b830d636136d0181047"
+}
+```
+
