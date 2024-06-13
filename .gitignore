@@ -8,6 +8,7 @@ __pycache__/
 .env
 .env.bstack
 .env.local_emulator
+test_data.json
 #allure
 allure-results
 tests/allure-results

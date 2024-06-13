@@ -1,18 +1,19 @@
 import allure
 from pages.AuthPage import AuthPage
 from pages.MainPage import MainPage
+import pytest
 
+# @pytest.mark.skip
+def test_auth(driver, testdata: dict):
+    email = testdata.get("email")
+    password = testdata.get("password")
+    username = testdata.get("username")
 
-def test_auth(browser):
-    email = "salesakk@gmail.com"
-    password = "111111Atlas1"
-    username = 'Dimitri'
-
-    auth_page = AuthPage(browser)
+    auth_page = AuthPage(driver)
     auth_page.go()
     auth_page.login_as(email, password)
 
-    main_page = MainPage(browser)
+    main_page = MainPage(driver)
     main_page.open_menu()
     info = main_page.get_account_info()
 

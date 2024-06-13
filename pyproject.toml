@@ -10,6 +10,7 @@ python = "^3.12"
 pytest = "^8.2.2"
 selenium = "4.21.0"
 allure-pytest = "2.13.5"
+requests = "2.32.3"
 
 [tool.pytest.ini_options]
 addopts = [
@@ -18,10 +19,11 @@ addopts = [
     "-s",
     "-v",
 ]
-#
-#testpaths = [
-#    "tests,
-#]
+
+testpaths = [
+    "tests/api",
+    "tests/ui",
+]
 
 [build-system]
 requires = ["poetry-core"]
