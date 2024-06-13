@@ -23,7 +23,10 @@
 ### Локальный запуск
 1. Иметь тестовый аккаунт на платформе `Trello`: логин, пароль, имя пользователя
 2. Получить API key & Token via Trello service
-2. Создать файл `test_data.json` и наполнить тестовыми данными в формате:
+2. Склонировать проект `git clone https://github.com/MDN78/pytest_ui_api_template.git`
+3. Установить все зависимости, в том числе:
+   - Создать файл `test_data.json` в корневой папке проекта
+   - Наполнить тестовыми данными в формате:
 ```json
 {
     "key": "3d8eb615e7abdd4dbe36bcche656f9",
@@ -34,4 +37,6 @@
     "org_id": "63558b830d636136d0181047"
 }
 ```
-
+4. Запустить тесты `pytest` или `python -m pytest`
+5. Сгенерировать отчет `allure generate allure-files -o allure-report` 
+6. Открыть отчет `allure open allure-report` или `allure serve`
