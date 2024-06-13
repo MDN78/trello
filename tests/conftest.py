@@ -66,3 +66,34 @@ def delete_board() -> str:
 @pytest.fixture
 def testdata() -> dict:
     return DataProvider()
+
+
+@pytest.fixture
+def driver_auth():
+    with allure.step("Open and prepare browser"):
+        timeout = ConfigProvider().getint("ui", "timeout")
+
+        driver_name = ConfigProvider().get("ui", "browser_name")
+        driver = None
+
+        if driver_name == 'chrome':
+            driver = webdriver.Chrome()
+        else:
+            driver = webdriver.Firefox()
+
+        driver.implicitly_wait(timeout)
+        driver.maximize_window()
+        url = ConfigProvider().get("ui", "base_url")
+        driver.get(url)
+        data = DataProvider()
+        cookie = {
+            "name": "token",
+            "value": data.get_token()
+        }
+        driver.add_cookie(cookie)
+        driver.refresh()
+        driver.refresh()
+        yield driver
+
+    with allure.step("Close browser"):
+        driver.quit()
