@@ -2,8 +2,9 @@ from api.BoardApi import BoardApi
 import allure
 import pytest
 
+
 @pytest.mark.skip
-def test_create_list(api_client: BoardApi, dummy_board_id: str, testdata: dict ):
+def test_create_list(api_client: BoardApi, dummy_board_id: str, testdata: dict):
     org_id = testdata.get("org_id")
     api_client.create_list("new list for test", dummy_board_id)
     board_lists = api_client.get_lists_by_board_id(dummy_board_id)
@@ -11,6 +12,7 @@ def test_create_list(api_client: BoardApi, dummy_board_id: str, testdata: dict )
     api_client.delete_board_by_id(dummy_board_id)
     board_list_after = api_client.get_all_boards_by_org_id(org_id)
     assert len(board_list_after) == 0
+
 
 @pytest.mark.skip
 def test_edit_cart(api_client: BoardApi, dummy_card_id: str, testdata: dict):
@@ -21,6 +23,7 @@ def test_edit_cart(api_client: BoardApi, dummy_card_id: str, testdata: dict):
     board_list_after = api_client.get_all_boards_by_org_id(org_id)
     assert len(board_list_after) == 0
 
+
 @pytest.mark.skip
 def test_move_cart(api_client: BoardApi, dummy_card_id: list):
     board_list_before = api_client.get_lists_by_board_id(dummy_card_id[0])
@@ -29,4 +32,14 @@ def test_move_cart(api_client: BoardApi, dummy_card_id: list):
     assert move_card["name"] != []
     board_lists_after = api_client.get_lists_by_board_id(dummy_card_id[0])
     assert len(board_lists_after) > len(board_list_before)
+    api_client.delete_board_by_id(dummy_card_id[0])
+
+
+@pytest.mark.skip
+def test_delete_card(api_client: BoardApi, dummy_card_id: list, testdata: dict):
+    card_info_before = api_client.get_cards_in_list(dummy_card_id[2])
+    assert card_info_before != []
+    api_client.delete_card(dummy_card_id[1])
+    card_info_after = api_client.get_cards_in_list(dummy_card_id[2])
+    assert card_info_after == []
     api_client.delete_board_by_id(dummy_card_id[0])

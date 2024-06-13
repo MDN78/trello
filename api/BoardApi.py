@@ -98,6 +98,15 @@ class BoardApi:
         resp = requests.post(path, headers=headers, params=body)
         return resp.json()
 
+    @allure.step("API. Delete card {card_id}")
+    def delete_card(self, card_id: str) -> None:
+        body = {
+            "key": self.key,
+            "token": self.token
+        }
+        path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
+        resp = requests.delete(path, params=body)
+
     @allure.step("API. Get lists in board {board_id}")
     def get_lists_by_board_id(self, board_id: str) -> dict:
         path = "{trello}/boards/{board_id}/lists".format(trello=self.base_url, board_id=board_id)
@@ -105,5 +114,15 @@ class BoardApi:
             "key": self.key,
             "token": self.token
         }
+        resp = requests.get(path, params=body)
+        return resp.json()
+
+    @allure.step("API. Get all cards in list {list_id}")
+    def get_cards_in_list(self, list_id: str):
+        body = {
+            "key": self.key,
+            "token": self.token
+        }
+        path = "{trello}/lists/{list_id}/cards".format(trello=self.base_url, list_id=list_id)
         resp = requests.get(path, params=body)
         return resp.json()
