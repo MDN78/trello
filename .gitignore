@@ -1,3 +1,4 @@
+*test_data.json
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -8,7 +9,7 @@ __pycache__/
 .env
 .env.bstack
 .env.local_emulator
-test_data.json
+
 #allure
 allure-results
 tests/allure-results
@@ -154,6 +155,7 @@ venv.bak/
 .mypy_cache/
 .dmypy.json
 dmypy.json
+
 
 # Pyre type checker
 .pyre/
