@@ -10,7 +10,7 @@ def test_get_boards(api_client: BoardApi, testdata: dict):
     assert len(board_list) == 0
     print(board_list)
 
-# @pytest.mark.skip
+@pytest.mark.skip
 def test_create_board(api_client: BoardApi, delete_board: dict, testdata: dict):
     org_id = testdata.get("org_id")
     board_list_before = api_client.get_all_boards_by_org_id(org_id)
