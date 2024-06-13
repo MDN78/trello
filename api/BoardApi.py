@@ -33,6 +33,20 @@ class BoardApi:
         resp = requests.post(path, params=body)
         return resp.json()
 
+    @allure.step("API. Update card {card_id} - new name is {new_name}")
+    def update_card(self, new_name: str, card_id: str) -> dict:
+        headers = {
+            "Accept": "application/json"
+        }
+        body = {
+            "name": new_name,
+            "key": self.key,
+            "token": self.token
+        }
+        path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
+        resp = requests.put(path, headers=headers, params=body,)
+        return resp.json()
+
     @allure.step("API. Delete board with id {id}")
     def delete_board_by_id(self, id: str) -> dict:
         body = {
@@ -53,6 +67,21 @@ class BoardApi:
         }
         path = "{trello}/boards/{board_id}/lists".format(trello=self.base_url, board_id=board_id)
         resp = requests.post(path, params=body)
+        return resp.json()
+
+    @allure.step("API. Create card {name} in list {list_id}")
+    def create_card(self, name: str, list_id: str) -> str:
+        headers = {
+            "Accept": "application/json"
+        }
+        body = {
+            "idList": list_id,
+            "key": self.key,
+            "token": self.token,
+            "name": name
+        }
+        path = "{trello}/cards".format(trello=self.base_url)
+        resp = requests.post(path, headers=headers, params=body)
         return resp.json()
 
     @allure.step("API. Get lists in board {board_id}")
