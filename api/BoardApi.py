@@ -44,7 +44,21 @@ class BoardApi:
             "token": self.token
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
-        resp = requests.put(path, headers=headers, params=body,)
+        resp = requests.put(path, headers=headers, params=body, )
+        return resp.json()
+
+    @allure.step("API. Move card {card_id} to another list {list_id}")
+    def move_card(self, list_id: str, card_id: str):
+        headers = {
+            "Accept": "application/json"
+        }
+        body = {
+            "key": self.key,
+            "token": self.token,
+            "idList": list_id
+        }
+        path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
+        resp = requests.put(path, headers=headers, params=body)
         return resp.json()
 
     @allure.step("API. Delete board with id {id}")
