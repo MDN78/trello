@@ -21,7 +21,8 @@
 <code><img width="5%" title="pycharm" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg"></code>  
 
 ### Локальный запуск
-1. Получить API key & Token via Trello service
+1. Иметь тестовый аккаунт на платформе `Trello`: логин, пароль, имя пользователя
+2. Получить API key & Token via Trello service
 2. Создать файл `test_data.json` и наполнить тестовыми данными в формате:
 ```json
 {
