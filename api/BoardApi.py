@@ -1,5 +1,5 @@
-import requests
 import allure
+import requests
 from utils.logger import response_logging
 
 
@@ -23,7 +23,6 @@ class BoardApi:
         response_logging(resp)
         status_code = resp.status_code
         return [resp.json().get("boards"), status_code, resp.json()]
-
 
     @allure.step("API. Create new board {name}")
     def create_board(self, name: str) -> dict:
@@ -66,7 +65,7 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.put(path, headers=headers, params=body)
-        # response_logging(resp)
+        response_logging(resp)
         status_code = resp.status_code
         return [resp.json(), status_code]
 
@@ -79,7 +78,8 @@ class BoardApi:
         path = "{trello}/boards/{board_id}".format(trello=self.base_url, board_id=id)
         resp = requests.delete(path, params=body)
         response_logging(resp)
-        return resp.json()
+        status_code = resp.status_code
+        return status_code
 
     @allure.step("API. Create list {name} in board {board_id}")
     def create_list(self, name: str, board_id: str) -> dict:
@@ -107,7 +107,7 @@ class BoardApi:
         }
         path = "{trello}/cards".format(trello=self.base_url)
         resp = requests.post(path, headers=headers, params=body)
-        # response_logging(resp)
+        response_logging(resp)
         return resp.json()
 
     @allure.step("API. Delete card {card_id}")
@@ -118,7 +118,7 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.delete(path, params=body)
-        # response_logging(resp)
+        response_logging(resp)
         status_code = resp.status_code
         return status_code
 
@@ -130,7 +130,7 @@ class BoardApi:
             "token": self.token
         }
         resp = requests.get(path, params=body)
-        # response_logging(resp)
+        response_logging(resp)
         return resp.json()
 
     @allure.step("API. Get all cards in list {list_id}")
@@ -141,5 +141,5 @@ class BoardApi:
         }
         path = "{trello}/lists/{list_id}/cards".format(trello=self.base_url, list_id=list_id)
         resp = requests.get(path, params=body)
-        # response_logging(resp)
+        response_logging(resp)
         return resp.json()

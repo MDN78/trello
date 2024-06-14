@@ -1,7 +1,8 @@
 import allure
+import pytest
 from pages.AuthPage import AuthPage
 from pages.MainPage import MainPage
-import pytest
+
 
 @pytest.mark.skip
 def test_auth(driver, testdata: dict):

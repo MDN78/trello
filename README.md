@@ -31,6 +31,11 @@
 <code><img width="5%" title="alluretestops" src="https://github.com/MDN78/MDN78/blob/main/assets/allure_testops.png"></code>
 <code><img width="5%" title="pycharm" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg"></code>  
 
+Для написания UI-тестов используется чистый `Selenium`. API тесты используют библиотеку `Requests`. Библиотека модульного тестирования: `PyTest`
+Установки дополнительных приложений на компьютер пользователя не требуется.
+Фреймворк `Allure Report` собирает графический отчет о прохождении тестов
+
+
 ### Локальный запуск
 1. Иметь тестовый аккаунт на платформе `Trello`: логин, пароль, имя пользователя
 2. Получить API key & Token via Trello service

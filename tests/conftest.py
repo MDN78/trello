@@ -2,8 +2,9 @@ import pytest
 import allure
 from selenium import webdriver
 from api.BoardApi import BoardApi
-from configuration.ConfigProvider import ConfigProvider
 from testdata.DataProvider import DataProvider
+from configuration.ConfigProvider import ConfigProvider
+
 
 
 @pytest.fixture
