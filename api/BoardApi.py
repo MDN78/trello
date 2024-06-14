@@ -18,7 +18,6 @@ class BoardApi:
             'key': self.key,
             'token': self.token
         }
-        print(path)
         resp = requests.get(path, params=cookie)
         return resp.json().get("boards")
 
@@ -44,8 +43,9 @@ class BoardApi:
             "token": self.token
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
-        resp = requests.put(path, headers=headers, params=body, )
-        return resp.json()
+        resp = requests.put(path, headers=headers, params=body)
+        status_code = resp.status_code
+        return [resp.json(), status_code]
 
     @allure.step("API. Move card {card_id} to another list {list_id}")
     def move_card(self, list_id: str, card_id: str):
@@ -59,7 +59,8 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.put(path, headers=headers, params=body)
-        return resp.json()
+        status_code = resp.status_code
+        return [resp.json(), status_code]
 
     @allure.step("API. Delete board with id {id}")
     def delete_board_by_id(self, id: str) -> dict:
@@ -106,6 +107,8 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.delete(path, params=body)
+        status_code = resp.status_code
+        return status_code
 
     @allure.step("API. Get lists in board {board_id}")
     def get_lists_by_board_id(self, board_id: str) -> dict:
