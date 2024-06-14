@@ -1,5 +1,6 @@
 import requests
 import allure
+from utils.logger import response_logging
 
 
 class BoardApi:
@@ -19,6 +20,7 @@ class BoardApi:
             'token': self.token
         }
         resp = requests.get(path, params=cookie)
+        response_logging(resp)
         status_code = resp.status_code
         return [resp.json().get("boards"), status_code, resp.json()]
 
@@ -32,6 +34,7 @@ class BoardApi:
         }
         path = "{trello}/boards/".format(trello=self.base_url)
         resp = requests.post(path, params=body)
+        response_logging(resp)
         status_code = resp.status_code
         return [resp.json(), status_code]
 
@@ -47,6 +50,7 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.put(path, headers=headers, params=body)
+        response_logging(resp)
         status_code = resp.status_code
         return [resp.json(), status_code]
 
@@ -62,6 +66,7 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.put(path, headers=headers, params=body)
+        # response_logging(resp)
         status_code = resp.status_code
         return [resp.json(), status_code]
 
@@ -73,6 +78,7 @@ class BoardApi:
         }
         path = "{trello}/boards/{board_id}".format(trello=self.base_url, board_id=id)
         resp = requests.delete(path, params=body)
+        response_logging(resp)
         return resp.json()
 
     @allure.step("API. Create list {name} in board {board_id}")
@@ -85,6 +91,7 @@ class BoardApi:
         }
         path = "{trello}/boards/{board_id}/lists".format(trello=self.base_url, board_id=board_id)
         resp = requests.post(path, params=body)
+        response_logging(resp)
         return resp.json()
 
     @allure.step("API. Create card {name} in list {list_id}")
@@ -100,6 +107,7 @@ class BoardApi:
         }
         path = "{trello}/cards".format(trello=self.base_url)
         resp = requests.post(path, headers=headers, params=body)
+        # response_logging(resp)
         return resp.json()
 
     @allure.step("API. Delete card {card_id}")
@@ -110,6 +118,7 @@ class BoardApi:
         }
         path = "{trello}/cards/{card_id}".format(trello=self.base_url, card_id=card_id)
         resp = requests.delete(path, params=body)
+        # response_logging(resp)
         status_code = resp.status_code
         return status_code
 
@@ -121,6 +130,7 @@ class BoardApi:
             "token": self.token
         }
         resp = requests.get(path, params=body)
+        # response_logging(resp)
         return resp.json()
 
     @allure.step("API. Get all cards in list {list_id}")
@@ -131,4 +141,5 @@ class BoardApi:
         }
         path = "{trello}/lists/{list_id}/cards".format(trello=self.base_url, list_id=list_id)
         resp = requests.get(path, params=body)
+        # response_logging(resp)
         return resp.json()

@@ -235,6 +235,19 @@ files = [
 ]
 
 [[package]]
+name = "curlify"
+version = "2.2.1"
+description = "Library to convert python requests object to curl command."
+optional = false
+python-versions = "*"
+files = [
+    {file = "curlify-2.2.1.tar.gz", hash = "sha256:0d3f02e7235faf952de8ef45ef469845196d30632d5838bcd5aee217726ddd6d"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[[package]]
 name = "h11"
 version = "0.14.0"
 description = "A pure-Python, bring-your-own-I/O implementation of HTTP/1.1"
@@ -651,4 +664,4 @@ h11 = ">=0.9.0,<1"
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "89b8a4af0dfe7057f1ad1be3332e61381f371cd96ee1bb529beb479eaa5da5ca"
+content-hash = "a4c9197adca12ba0917701101234cd8cd8149d16265f508a5a7fa6eefd7b6e35"

@@ -48,8 +48,9 @@ def dummy_board_id() -> str:
     key = DataProvider().get_key()
     token = DataProvider().get_token()
     api = BoardApi(base_url=url, key=key, token=token)
-    resp = api.create_board('Board to be deleted').get("id")
-    return resp
+    resp = api.create_board('Board to be deleted')
+    resp1 = resp[0].get("id")
+    return resp1
 
 
 @pytest.fixture
@@ -58,10 +59,11 @@ def dummy_card_id() -> list:
     key = DataProvider().get_key()
     token = DataProvider().get_token()
     api = BoardApi(url, key, token)
-    board = api.create_board("Board to be deleted").get("id")
-    resp = api.create_list("List for test 2", board).get("id")
+    board = api.create_board("Board to be deleted")
+    board1 = board[0].get("id")
+    resp = api.create_list("List for test 2", board1).get("id")
     card = api.create_card("New test card",resp)
-    return [board, card["id"], resp]
+    return [board1, card["id"], resp]
 
 @pytest.fixture
 def delete_board() -> str:

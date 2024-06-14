@@ -12,6 +12,7 @@ selenium = "4.21.0"
 allure-pytest = "2.13.5"
 requests = "2.32.3"
 jsonschema = "4.21.1"
+curlify = "^2.2.1"
 
 [tool.pytest.ini_options]
 addopts = [
