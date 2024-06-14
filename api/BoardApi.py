@@ -19,7 +19,9 @@ class BoardApi:
             'token': self.token
         }
         resp = requests.get(path, params=cookie)
-        return resp.json().get("boards")
+        status_code = resp.status_code
+        return [resp.json().get("boards"), status_code, resp.json()]
+
 
     @allure.step("API. Create new board {name}")
     def create_board(self, name: str) -> dict:
@@ -30,7 +32,8 @@ class BoardApi:
         }
         path = "{trello}/boards/".format(trello=self.base_url)
         resp = requests.post(path, params=body)
-        return resp.json()
+        status_code = resp.status_code
+        return [resp.json(), status_code]
 
     @allure.step("API. Update card {card_id} - new name is {new_name}")
     def update_card(self, new_name: str, card_id: str) -> dict:

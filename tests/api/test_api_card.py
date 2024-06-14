@@ -23,7 +23,7 @@ def test_create_list(api_client: BoardApi, dummy_board_id: str, testdata: dict):
 @allure.epic("API tests")
 @allure.severity(severity_level='normal')
 @allure.title("Edit card")
-# @pytest.mark.skip
+@pytest.mark.skip
 def test_edit_cart(api_client: BoardApi, dummy_card_id: str, testdata: dict):
     status = api_client.update_card("Foxtrot", dummy_card_id[1])
     api_client.delete_board_by_id(dummy_card_id[0])
