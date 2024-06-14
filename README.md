@@ -51,3 +51,7 @@
 4. Запустить тесты `pytest` или `python -m pytest`
 5. Сгенерировать отчет `allure generate allure-files -o allure-report` 
 6. Открыть отчет `allure open allure-report` или `allure serve`
+
+## Allure report  
+Отчет позволяет получить детальную информацию по все шагам тестов, включая скриншоты и log - файлы  
+![](assets/allure_report_2.PNG)  
