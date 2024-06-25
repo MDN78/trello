@@ -5,7 +5,7 @@ from utils.logger import response_logging
 
 class BoardApi:
 
-    @allure.step("URL: {base_url}, auth token {token}")
+    @allure.step("URL: {base_url}")
     def __init__(self, base_url: str, key: str, token: str) -> None:
         self.base_url = base_url
         self.key = key
