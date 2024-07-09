@@ -22,7 +22,7 @@ class MainPage:
 
     @allure.step("UI. Get information about user")
     def get_account_info(self) -> list[str]:
-        container = self.__driver.find_element(By.CSS_SELECTOR, "div[class=mJBO4dHZbrIG_0]")
+        container = self.__driver.find_element(By.CSS_SELECTOR, "div[class=vqeVFoaA8KQnX4]")
         fields = container.find_elements(By.CSS_SELECTOR, "div")
         name = fields[0].text
         email = fields[1].text

@@ -82,25 +82,27 @@ def testdata() -> dict:
     return DataProvider()
 
 
-@pytest.fixture
-def driver_auth():
-    with allure.step("Open and prepare browser"):
-        timeout = ConfigProvider().getint("ui", "timeout")
-
-        driver_name = ConfigProvider().get("ui", "browser_name")
-        driver = None
-
-        if driver_name == 'chrome':
-            driver = webdriver.Chrome()
-        else:
-            driver = webdriver.Firefox()
-
-        driver.implicitly_wait(timeout)
-        driver.maximize_window()
-        url = ConfigProvider().get("ui", "base_url")
-        driver.get(url)
-        data = DataProvider()
-        # cookie = {
+# @pytest.fixture
+# def driver_auth():
+#     with allure.step("Open and prepare browser"):
+#         timeout = ConfigProvider().getint("ui", "timeout")
+#
+#         driver_name = ConfigProvider().get("ui", "browser_name")
+#         driver = None
+#
+#         if driver_name == 'chrome':
+#             driver = webdriver.Chrome()
+#         else:
+#             driver = webdriver.Firefox()
+#
+#         driver.implicitly_wait(timeout)
+#         driver.maximize_window()
+#         url = ConfigProvider().get("ui", "base_url")
+#         driver.get(url)
+#
+#         # driver.get(url)
+#         data = DataProvider()
+#         # cookie = {
         #     "key": data.get_key(),
         #     "token": data.get_token(),
         #     "value": "Finish Final Presentation"
@@ -130,38 +132,44 @@ def driver_auth():
         # cookie = response.cookies
         # print(response.text)
         # 'https://id.atlassian.com/login?application=trello'
-        url1 = 'https://id.atlassian.com/login?application=trello'
-        login = "salesakk@gmail.com"
-        password = '111111Atlas1'
 
-        payload = {"action": "login", "email": login, "password": password}
-        payload_json = json.dumps(payload)
-        headers = {
-            'content-type': 'application/json; charset=UTF-8',
-            'x-requested-with': 'XMLHttpRequest'
-        }
 
-        result = requests.post(url1, headers=headers, data=payload_json)
-
-        cookies = result.cookies.get_dict()
-
-        # result = requests.post(url=url1, data={'email': login, 'password': password})
-        # print(result)
-        # cookie = result.cookies
-        print(cookies)
-        print(cookies['atlassian.account.ffs.id'])
-        cookie = {
-            "name": "atlassian.account.ffs.id",
-            "value": cookies['atlassian.account.ffs.id']
-        }
-        driver.add_cookie(cookie)
-        # driver.get(url)
-        # driver.add_cookie(cookies)
-        driver.refresh()
-        driver.refresh()
-        yield driver
-
-    with allure.step("Close browser"):
-        driver.quit()
+        # log_url = 'https://id.atlassian.com/login?application=trello'
+    #
+    #     url1 = 'https://id.atlassian.com/login?application=trello'
+    #     login = "salesakk@gmail.com"
+    #     password = '111111Atlas1'
+    #
+    #     payload = {"action": "login", "email": login, "password": password}
+    #     payload_json = json.dumps(payload)
+    #     headers = {
+    #         'content-type': 'application/json; charset=UTF-8',
+    #         'x-requested-with': 'XMLHttpRequest'
+    #     }
+    #
+    #     result = requests.post(url1, headers=headers, data=payload_json)
+    #
+    #     cookies = result.cookies.get_dict()
+    #
+    #     # result = requests.post(url=url1, data={'email': login, 'password': password})
+    #     # print(result)
+    #     # cookie = result.cookies
+    #     print(cookies)
+    #     print(cookies['atlassian.account.ffs.id'])
+    #
+    #     cookie = {
+    #         "name": "atlassian.account.ffs.id",
+    #         "value": cookies['atlassian.account.ffs.id'],
+    #     }
+    #
+    #     driver.add_cookie(cookie)
+    #     # driver.get(url)
+    #     # driver.add_cookie(cookies)
+    #     driver.refresh()
+    #     driver.refresh()
+    #     yield driver
+    #
+    # with allure.step("Close browser"):
+    #     driver.quit()
 
 

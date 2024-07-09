@@ -39,6 +39,7 @@ def test_create_board(driver, api_client: BoardApi, testdata: dict):
 @allure.epic("UI tests")
 @allure.severity(severity_level='normal')
 @allure.title("Delete board")
+@pytest.mark.skip
 def test_delete_board(driver_auth):
     main_page = MainPage(driver_auth)
     main_page.open_create_form()

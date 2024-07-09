@@ -4,7 +4,7 @@ from pages.AuthPage import AuthPage
 from pages.MainPage import MainPage
 
 
-@pytest.mark.skip
+# @pytest.mark.skip
 def test_auth(driver, testdata: dict):
     email = testdata.get("email")
     password = testdata.get("password")
